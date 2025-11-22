@@ -6,7 +6,7 @@
 # 设置默认值
 DB_USER=${1:-root}
 DB_PASS=${2:-NachoNO1}
-DB_NAME=${3:-Pixels}
+DB_NAME=${3:-ArkPixels}
 
 # 检查mariadb客户端是否安装
 if ! command -v mariadb &> /dev/null; then

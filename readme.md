@@ -1,16 +1,16 @@
-# Pixels 介绍
+# ArkPixels 介绍
 
-Pixels是一个开源的图片浏览系统，可以方便地管理和展示图片。
-注意：Pixels还处于开发阶段，功能还不完整，请不要在生产环境中使用。
+ArkPixels是一个开源的图片浏览系统，可以方便地管理和展示图片。
+注意：ArkPixels还处于开发阶段，功能还不完整，请不要在生产环境中使用。
 
 # 部署
 
-要部署Pixels，请按照以下步骤进行：
+要部署ArkPixels，请按照以下步骤进行：
 
-1. 下载Pixels源码：
+1. 下载ArkPixels源码：
 
 ```shell
-git clone https://github.com/DemonPlayer00/Pixels.git
+git clone https://github.com/DemonPlayer00/ArkPixels.git
 ```
 
 2. 安装依赖：
@@ -20,7 +20,7 @@ sudo apt install nodejs npm mariadb #Debian/Ubuntu
 sudo yum install nodejs npm mariadb #CentOS/Fedora
 sudo pacman -S nodejs npm mariadb #Arch Linux
 
-cd Pixels
+cd ArkPixels
 npm install
 ```
 

@@ -6,7 +6,7 @@
 # 检查参数
 if [ $# -lt 1 ]; then
     echo "用法: $0 [目录路径] [数据库用户名] [数据库密码] [数据库名]"
-    echo "示例: $0 /path/to/authors root password Pixels"
+    echo "示例: $0 /path/to/authors root password ArkPixels"
     exit 1
 fi
 
@@ -14,7 +14,7 @@ fi
 DIR_PATH="$1"
 DB_USER=${2:-root}
 DB_PASS=${3:-password}
-DB_NAME=${4:-Pixels}
+DB_NAME=${4:-ArkPixels}
 
 # 检查mariadb客户端
 if ! command -v mariadb &> /dev/null; then

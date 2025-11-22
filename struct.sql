@@ -1,7 +1,7 @@
 /*M!999999\- enable the sandbox mode */ 
 -- MariaDB dump 10.19-12.0.2-MariaDB, for Linux (x86_64)
 --
--- Host: localhost    Database: Pixels
+-- Host: localhost    Database: ArkPixels
 -- ------------------------------------------------------
 -- Server version	12.0.2-MariaDB
 
