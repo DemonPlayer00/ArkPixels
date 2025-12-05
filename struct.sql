@@ -1,9 +1,9 @@
 /*M!999999\- enable the sandbox mode */ 
--- MariaDB dump 10.19-12.0.2-MariaDB, for Linux (x86_64)
+-- MariaDB dump 10.19-12.1.2-MariaDB, for Linux (x86_64)
 --
--- Host: localhost    Database: ArkPixels
+-- Host: localhost    Database: Pixels
 -- ------------------------------------------------------
--- Server version	12.0.2-MariaDB
+-- Server version	12.1.2-MariaDB
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -35,7 +35,6 @@ CREATE TABLE `artworks` (
   KEY `idx_user_created` (`user_id`,`created_at` DESC),
   KEY `idx_created_at` (`created_at` DESC),
   KEY `idx_title_created` (`title`(24),`created_at` DESC),
-  KEY `idx_artworks_user_id` (`user_id`),
   FULLTEXT KEY `idx_title_ft` (`title`),
   CONSTRAINT `fk_artworks_visual_users` FOREIGN KEY (`user_id`) REFERENCES `virtual_users` (`id`) ON DELETE SET NULL ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -73,6 +72,24 @@ CREATE TABLE `artworks_tags` (
   `tag` varchar(32) NOT NULL,
   PRIMARY KEY (`work_id`,`tag`),
   CONSTRAINT `fk_artworks_tags_work_id` FOREIGN KEY (`work_id`) REFERENCES `artworks` (`work_id`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `follower`
+--
+
+DROP TABLE IF EXISTS `follower`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8mb4 */;
+CREATE TABLE `follower` (
+  `virtual_user_id` bigint(20) unsigned NOT NULL,
+  `follow_user_id` bigint(20) unsigned NOT NULL,
+  UNIQUE KEY `virtual_user_id` (`virtual_user_id`,`follow_user_id`),
+  KEY `idx_follower_virtual` (`virtual_user_id`),
+  KEY `idx_follower_follow` (`follow_user_id`),
+  CONSTRAINT `fk_follower_follow` FOREIGN KEY (`follow_user_id`) REFERENCES `virtual_users` (`id`),
+  CONSTRAINT `fk_follower_virtual` FOREIGN KEY (`virtual_user_id`) REFERENCES `virtual_users` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -131,7 +148,6 @@ CREATE TABLE `virtual_users` (
   `created_at` bigint(20) unsigned NOT NULL DEFAULT (unix_timestamp() * 1000),
   PRIMARY KEY (`id`),
   KEY `idx_virtual_users_created` (`created_at` DESC,`id` DESC),
-  KEY `idx_virtual_users_id` (`id`),
   FULLTEXT KEY `idx_name_ft` (`name`)
 ) ENGINE=InnoDB AUTO_INCREMENT=62 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -145,4 +161,4 @@ CREATE TABLE `virtual_users` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*M!100616 SET NOTE_VERBOSITY=@OLD_NOTE_VERBOSITY */;
 
--- Dump completed on 2025-08-30 11:13:42
+-- Dump completed on 2025-12-05 15:32:00
